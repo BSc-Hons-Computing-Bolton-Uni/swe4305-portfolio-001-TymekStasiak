@@ -1,9 +1,8 @@
-// Hello World Program
 package Logbook.Week1;
 
 import java.util.Scanner;
 
-class Main {
+class MainTask2 {
     public static void main(String[] args)
     {
         String name;
