@@ -1,4 +1,6 @@
 // Hello World Program
+package Logbook.Week1;
+
 import java.util.Scanner;
 
 class Main {
