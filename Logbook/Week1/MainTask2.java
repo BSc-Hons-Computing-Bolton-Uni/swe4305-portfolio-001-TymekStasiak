@@ -1,5 +1,4 @@
 package Logbook.Week1;
-
 import java.util.Scanner;
 
 class MainTask2 {
