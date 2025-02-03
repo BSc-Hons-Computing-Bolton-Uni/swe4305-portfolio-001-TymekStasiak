@@ -4,10 +4,10 @@ import java.util.Scanner;
 class MainTask3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the length of the triangle");
+        System.out.print("Enter the length of the triangle: ");
         double length = scanner.nextDouble();
 
-        System.out.print("Enter the height of the trinagle");
+        System.out.print("Enter the height of the trinagle: ");
         double height = scanner.nextDouble();
 
         double perimiter = 2 * (length + height);
