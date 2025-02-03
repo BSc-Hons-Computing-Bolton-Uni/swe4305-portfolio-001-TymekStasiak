@@ -19,7 +19,7 @@ class MainTask7 {
                 Period.between(birth_date, current_date).getDays() +
                         Period.between(birth_date, current_date).getYears() * 365 +
                         Period.between(birth_date, current_date).getMonths() * 30;
-        System.out.println("You are approximately " + days_old + " days old");
+        System.out.print("You are approximately " + days_old + " days old");
     }
 
 }
