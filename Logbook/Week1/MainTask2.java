@@ -1,7 +1,7 @@
 package Logbook.Week1;
 import java.util.Scanner;
 
-class MainTask2 {
+public class MainTask2 {
     public static void main(String[] args)
     {
         String name;

@@ -2,7 +2,7 @@ package Logbook.Week1;
 import java.util.Scanner;
 import java.time.Year;
 
-class MainTask6 {
+public class MainTask6 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your Age: ");

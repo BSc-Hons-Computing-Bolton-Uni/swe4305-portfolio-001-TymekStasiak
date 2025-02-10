@@ -1,7 +1,7 @@
 package Logbook.Week1;
 import java.util.Scanner;
 
-class MainTask4 {
+public class MainTask4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the first number: ");

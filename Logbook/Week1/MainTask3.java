@@ -1,7 +1,7 @@
 package Logbook.Week1;
 import java.util.Scanner;
 
-class MainTask3 {
+public class MainTask3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the length of the triangle: ");
