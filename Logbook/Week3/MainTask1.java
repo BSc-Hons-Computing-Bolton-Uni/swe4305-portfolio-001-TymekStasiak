@@ -17,6 +17,7 @@ class Student {
     public String getName() {
         return name;
     }
+
     public void print() {
         System.out.println("Student ID: " + studentID + ", Name " + name);
     }
