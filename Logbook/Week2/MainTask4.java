@@ -1,6 +1,6 @@
 package Logbook.Week2;
 
-public class MainTask4 {
+class WhileLoop2 {
     public static void main(String[] args) {
         int i = 1;
         do {

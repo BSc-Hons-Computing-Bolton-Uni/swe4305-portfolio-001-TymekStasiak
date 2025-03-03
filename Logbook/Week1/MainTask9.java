@@ -1,7 +1,7 @@
 package Logbook.Week1;
 import java.util.Scanner;
 
-public class MainTask9 {
+class BankSavings {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the amount you want to deposit into your savings account: ");

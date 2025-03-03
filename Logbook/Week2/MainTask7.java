@@ -1,7 +1,7 @@
 package Logbook.Week2;
 import java.util.Scanner;
 
-public class MainTask7 {
+class GradeMarkCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a mark between (0-100): ");
