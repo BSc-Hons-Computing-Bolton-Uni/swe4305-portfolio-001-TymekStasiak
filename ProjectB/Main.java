@@ -1,5 +1,4 @@
-package ProjectB;
-
+import java.io.*;
 import java.util.*;
 
 class Student {
@@ -69,15 +68,42 @@ class Student {
         System.out.println("Mark: " + mark);
         System.out.println("Grade: " + classification);
     }
+
+    String toFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(studentNumber).append("|").append(firstName).append("|").append(surname).append("|");
+        for (Map.Entry<String, Integer> entry : modules.entrySet()) {
+            sb.append(entry.getKey()).append(":").append(entry.getValue()).append(",");
+        }
+        return sb.toString();
+    }
+
+    static Student fromFileString(String line) {
+        String[] parts = line.split("\\|");
+        Student student = new Student(parts[0], parts[1], parts[2]);
+        if (parts.length > 3 && !parts[3].isEmpty()) {
+            String[] moduleEntries = parts[3].split(",");
+            for (String entry : moduleEntries) {
+                String[] moduleData = entry.split(":");
+                if (moduleData.length == 2) {
+                    student.modules.put(moduleData[0], Integer.parseInt(moduleData[1]));
+                }
+            }
+        }
+        return student;
+    }
 }
 
 class UniversitySystem {
     static Map<String, String> moduleMap = new HashMap<>();
     static Map<String, Student> students = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
+    static final String FILE_NAME = "students.txt";
 
     public static void main(String[] args) {
         initialiseModules();
+        loadFromFile();
+
         while (true) {
             System.out.println("\nMenu:");
             System.out.println("1. Add Student");
@@ -101,6 +127,7 @@ class UniversitySystem {
                     displayGrade();
                     break;
                 case 5:
+                    saveToFile();
                     return;
                 default:
                     System.out.println("Invalid option.");
@@ -139,6 +166,7 @@ class UniversitySystem {
         String surname = scanner.nextLine();
         students.put(number, new Student(number, firstName, surname));
         System.out.println("Student added.");
+        saveToFile();
     }
 
     static void editStudent() {
@@ -165,11 +193,13 @@ class UniversitySystem {
                     System.out.print("Enter mark (0-100): ");
                     int mark = Integer.parseInt(scanner.nextLine());
                     student.addOrUpdateModule(moduleCode, mark, moduleMap);
+                    saveToFile();
                     break;
                 case 2:
                     System.out.print("Enter module code to remove: ");
                     String delCode = scanner.nextLine().toUpperCase();
                     student.deleteModule(delCode);
+                    saveToFile();
                     break;
                 case 3:
                     return;
@@ -202,5 +232,26 @@ class UniversitySystem {
         String moduleCode = scanner.nextLine().toUpperCase();
         student.displayGradeForModule(moduleCode, moduleMap);
     }
-}
 
+    static void saveToFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
+            for (Student student : students.values()) {
+                writer.println(student.toFileString());
+            }
+        } catch (IOException e) {
+            System.out.println("Error saving data.");
+        }
+    }
+
+    static void loadFromFile() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Student student = Student.fromFileString(line);
+                students.put(student.studentNumber, student);
+            }
+        } catch (IOException e) {
+            // Ignore if file doesn't exist
+        }
+    }
+}
